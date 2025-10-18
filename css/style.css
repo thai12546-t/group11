@@ -1,196 +1,199 @@
-/* 🌌 Tổng thể */
-html {
-  scroll-behavior: smooth;
-}
-
+/* ===== Tổng thể trắng sáng, tinh tế ===== */
 body {
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #0a0a0a, #000);
-  color: #f0f0f0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(180deg, #ffffff, #f5f9ff);
+  color: #333;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
 }
 
-/* ✨ Nền chuyển động năng lượng */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: radial-gradient(circle, rgba(0,255,208,0.1) 1px, transparent 1px);
-  background-size: 40px 40px;
-  animation: moveBg 25s linear infinite;
-  z-index: 0;
-}
-@keyframes moveBg {
-  from { background-position: 0 0; }
-  to { background-position: 1000px 1000px; }
-}
-
-/* 🪐 Banner parallax + Neon glow */
-.banner {
+/* ===== Header ===== */
+.header {
+  background: linear-gradient(120deg, #00a2ff, #00ffc8);
+  color: white;
   text-align: center;
-  background: url('../img/group-banner.jpg') center/cover fixed;
-  padding: 100px 20px;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
+  padding-bottom: 50px;
+  border-radius: 0 0 60px 60px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.1);
 }
-.banner .overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 25px 10%;
 }
-.typing {
-  color: #00ffd0;
-  font-size: 2.8rem;
-  border-right: 3px solid #00ffd0;
-  white-space: nowrap;
-  overflow: hidden;
-  width: 0;
-  animation: typing 4s steps(30, end) forwards, blink 0.8s infinite;
-  z-index: 2;
-  position: relative;
+.logo {
+  font-size: 1.8em;
+  font-weight: 800;
+  letter-spacing: 1px;
 }
-@keyframes typing {
-  from { width: 0; }
-  to { width: 100%; }
+.logo span {
+  color: #eafff7;
 }
-@keyframes blink {
-  50% { border-color: transparent; }
-}
-.banner p {
-  font-size: 1.3rem;
-  animation: slideUp 2s ease;
-}
-
-/* 🔹 Navbar */
-.navbar {
-  background: rgba(17, 17, 17, 0.9);
-  padding: 12px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-}
-.navbar ul {
+.menu {
   list-style: none;
   display: flex;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-.navbar a {
-  color: #00ffd0;
-  text-decoration: none;
-  transition: 0.3s;
-}
-.navbar a:hover {
-  color: #fff;
-  transform: scale(1.1);
-  text-shadow: 0 0 10px #00ffd0;
-}
-
-/* 🔸 Section + Scroll Animation */
-.section {
-  padding: 60px 60px;
-  text-align: center;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: all 1s ease;
-}
-.section.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* 👥 Member cards */
-.member-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
-  margin-top: 30px;
+  margin: 0;
 }
-.member {
-  background: #1a1a1a;
-  padding: 20px;
-  border-radius: 16px;
-  box-shadow: 0 0 20px rgba(0, 255, 208, 0.2);
-  transition: transform 0.4s, box-shadow 0.4s;
-  overflow: hidden;
+.menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
   position: relative;
+  font-size: 1.05em;
 }
-.member::after {
+.menu a::after {
   content: "";
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
-  opacity: 0;
-  transition: opacity 0.5s;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #fff;
+  transition: width 0.3s;
 }
-.member:hover::after {
-  opacity: 1;
-}
-.member:hover {
-  transform: translateY(-10px) scale(1.03);
-  box-shadow: 0 0 25px rgba(0, 255, 208, 0.4);
-}
-.member img {
+.menu a:hover::after {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  transition: transform 0.6s;
 }
-.member:hover img {
-  transform: scale(1.1);
+.hero h2 {
+  font-size: 2.6em;
+  margin-top: 30px;
 }
-
-/* 🌈 Nút gradient động */
-.btn {
-  display: inline-block;
-  background: linear-gradient(90deg, #00ffd0, #08f7fe);
-  background-size: 200%;
-  color: #000;
-  padding: 10px 22px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background-position 0.5s, transform 0.3s;
-}
-.btn:hover {
-  background-position: right;
-  box-shadow: 0 0 15px #00ffd0;
-  transform: scale(1.1);
+.hero p {
+  font-size: 1.3em;
+  opacity: 0.9;
 }
 
-/* 🧱 Footer */
-footer {
-  text-align: center;
+/* ===== Section ===== */
+main {
+  max-width: 1100px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+.section {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  margin-bottom: 50px;
+  transition: 0.4s ease;
+}
+.section:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+.section h2 {
+  border-left: 5px solid #00c2ff;
+  padding-left: 12px;
+  color: #0077cc;
+  font-weight: 700;
+  font-size: 1.6em;
+}
+
+/* ===== Member Grid (5 người 1 hàng ngang, không cuộn) ===== */
+.member-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+  justify-items: center;
+  align-items: start;
+  padding: 20px;
+}
+
+/* ===== Card ===== */
+.card {
+  width: 100%;
+  max-width: 220px;
+  background: #f6faff;
+  border-radius: 20px;
   padding: 25px;
-  background: #111;
-  color: #999;
-  margin-top: 60px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 15px rgba(0, 150, 255, 0.1);
+}
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 25px rgba(0, 180, 255, 0.2);
 }
 
-/* ⚡ Keyframes */
-@keyframes slideUp {
-  from { transform: translateY(50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+/* ===== Ảnh thành viên ===== */
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 15px;
+  margin-bottom: 14px;
 }
 
-/* 💫 Glow Text */
-.glow-text {
-  text-shadow: 0 0 10px #00ffd0, 0 0 20px #08f7fe;
+/* ===== Chữ to và rõ hơn ===== */
+.card h3 {
+  color: #004c7d;
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.card p {
+  color: #555;
+  font-size: 1.05em;
+  margin-bottom: 14px;
 }
 
-/* 📱 Responsive */
-@media (max-width: 768px) {
-  .section { padding: 40px 20px; }
-  .navbar ul { flex-direction: column; gap: 10px; }
-  .typing { font-size: 2rem; }
+/* ===== Nút Portfolio ===== */
+.button {
+  display: inline-block;
+  padding: 10px 22px;
+  background: linear-gradient(90deg, #00aaff, #00ffd1);
+  color: #fff;
+  border-radius: 25px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.05em;
+  transition: 0.3s;
 }
-@media (max-width: 480px) {
-  .member-grid { grid-template-columns: 1fr; }
-  .btn { padding: 8px 16px; }
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px #00aaff;
+}
+
+/* ===== Projects / Contact ===== */
+.contact ul {
+  list-style: none;
+  padding: 0;
+}
+.contact a {
+  color: #0077cc;
+  text-decoration: none;
+  font-size: 1.05em;
+  transition: 0.3s;
+}
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: linear-gradient(90deg, #00c2ff, #00ffc8);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 40px 40px 0 0;
+  font-size: 1.05em;
+}
+
+/* ===== Responsive (co giãn theo màn hình) ===== */
+@media (max-width: 1200px) {
+  .member-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 800px) {
+  .member-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 500px) {
+  .member-grid {
+    grid-template-columns: 1fr;
+  }
 }

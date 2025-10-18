@@ -2,102 +2,95 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Nhóm - Web Developer Team</title>
+  <title>Group 11 - Portfolio Team</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- Banner -->
-  <header class="banner">
-    <div class="overlay"></div>
-    <h1 class="typing">PORTFOLIO WEB DEVELOPER</h1>
-    <p class="slide-up">"Sáng tạo - Học hỏi - Phát triển"</p>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="nav">
+      <div class="logo">Group <span>11</span></div>
+      <ul class="menu">
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#members">Thành viên</a></li>
+        <li><a href="#projects">Dự án nhóm</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </div>
+
+    <div class="hero">
+      <h2>PORTFOLIO TEAM GROUP 11</h2>
+      <p>Sáng tạo - Tinh thần nhóm - Công nghệ đổi mới</p>
+    </div>
   </header>
 
-  <!-- Navbar -->
-  <nav class="navbar">
-    <ul>
-      <li><a href="#about">Giới thiệu</a></li>
-      <li><a href="#members">Thành viên</a></li>
-      <li><a href="#projects">Dự án nhóm</a></li>
-      <li><a href="#contact">Liên hệ</a></li>
-    </ul>
-  </nav>
-
-  <!-- Nội dung chính -->
+  <!-- Main content -->
   <main>
-    <section id="about" class="section fade">
-      <h2>Về Nhóm</h2>
-      <p>Nhóm gồm 5 thành viên, cùng thực hiện dự án portfolio cá nhân sử dụng HTML, CSS3 và các hiệu ứng động đặc sắc.</p>
+    <!-- Giới thiệu -->
+    <section id="about" class="section">
+      <h2>Giới thiệu</h2>
+      <p>Group 11 là tập hợp của 5 thành viên năng động, cùng nhau phát triển dự án Portfolio cá nhân và nhóm sử dụng công nghệ web HTML5, CSS3, và hiệu ứng động sáng tạo.</p>
     </section>
 
-    <section id="members" class="section fade">
-      <h2 class="glow-text">Các thành viên</h2>
+    <!-- Thành viên -->
+    <section id="members" class="section">
+      <h2>Các thành viên</h2>
       <div class="member-grid">
-        <div class="member">
-          <img src="img/member1.jpg" alt="Thành viên 1">
-          <h3>Nguyễn Văn A</h3>
-          <p>Front-End Developer</p>
-          <a href="members/Bao.html" class="btn pulse">Xem Portfolio</a>
-        </div>
-
-        <div class="member">
-          <img src="images/cong/1.png" alt="Thành viên 2">
-          <h3>Võ Duy Công</h3>
-          <p>UI/UX Designer</p>
-          <a href="members/Cong.html" class="btn">Xem Portfolio</a>
-        </div>
-
-        <div class="member">
-          <img src="img/member3.jpg" alt="Thành viên 3">
-          <h3>Lê Văn C</h3>
-          <p>Back-End Developer</p>
-          <a href="members/member3.html" class="btn">Xem Portfolio</a>
-        </div>
-
-        <div class="member">
-          <img src="img/member4.jpg" alt="Thành viên 4">
-          <h3>Phạm Thị D</h3>
+        <div class="card">
+          <img src="images/avatarBao.jpg" alt="Tôn Thất Bảo">
+          <h3>Tôn Thất Bảo</h3>
           <p>Data Analyst</p>
-          <a href="members/member4.html" class="btn">Xem Portfolio</a>
+          <a href="members/Bao.html" class="button">Xem Portfolio</a>
         </div>
-
-        <div class="member">
-          <img src="img/member5.jpg" alt="Thành viên 5">
-          <h3>Hoàng Văn E</h3>
+        <div class="card">
+          <img src="img/member2.jpg" alt="Lương Xuân Bách">
+          <h3>Lương Xuân Bách</h3>
+          <p>UI/UX Designer</p>
+          <a href="members/Bach.html" class="button">Xem Portfolio</a>
+        </div>
+        <div class="card">
+          <img src="img/member3.jpg" alt="Võ Duy Công">
+          <h3>Võ Duy Công</h3>
+          <p>Back-End Developer</p>
+          <a href="members/Cong.html" class="button">Xem Portfolio</a>
+        </div>
+        <div class="card">
+          <img src="img/member4.jpg" alt="Phạm Đăng Trình">
+          <h3>Phạm Đăng Trình</h3>
+          <p>Data Analyst</p>
+          <a href="members/Trinh.html" class="button">Xem Portfolio</a>
+        </div>
+        <div class="card">
+          <img src="img/member5.jpg" alt="Trần Anh Thái">
+          <h3>Trần Anh Thái</h3>
           <p>AI Engineer</p>
-          <a href="members/member5.html" class="btn">Xem Portfolio</a>
+          <a href="members/Thai.html" class="button">Xem Portfolio</a>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section fade">
-      <h2 class="slide-down">Dự án nhóm</h2>
-      <p>Portfolio tổng hợp và trình bày dự án học kỳ của từng thành viên, thể hiện khả năng lập trình và thiết kế sáng tạo.</p>
+    <!-- Dự án nhóm -->
+    <section id="projects" class="section">
+      <h2>Dự án nhóm</h2>
+      <p>Portfolio nhóm thể hiện kỹ năng thiết kế, lập trình và làm việc nhóm, tổng hợp các sản phẩm cá nhân và nhóm sử dụng HTML, CSS, và các kỹ thuật front-end hiện đại.</p>
     </section>
 
-    <section id="contact" class="section fade">
+    <!-- Liên hệ -->
+    <section id="contact" class="section contact">
       <h2>Liên hệ</h2>
       <ul>
-        <li><a href="https://github.com/">Github nhóm</a></li>
-        <li><a href="https://facebook.com/">Facebook nhóm</a></li>
-        <li><a href="mailto:team@gmail.com">team@gmail.com</a></li>
+        <li><a href="https://github.com/">🌐 Github nhóm</a></li>
+        <li><a href="https://facebook.com/">📘 Facebook nhóm</a></li>
+        <li><a href="mailto:group11.team@gmail.com">✉️ group11.team@gmail.com</a></li>
       </ul>
     </section>
   </main>
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Nhóm Portfolio Web Developer</p>
+    <p>© 2025 Group 11 - Portfolio Web Developer Team</p>
   </footer>
 
-  <!-- Hiệu ứng xuất hiện khi cuộn -->
-  <script>
-  window.addEventListener("scroll", () => {
-    document.querySelectorAll(".fade").forEach(sec => {
-      const rect = sec.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 100) sec.classList.add("visible");
-    });
-  });
-  </script>
 </body>
 </html>
