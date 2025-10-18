@@ -9,23 +9,28 @@
 </head>
 <body>
   <div class="container">
-    <nav class="nav">
+    <nav class="nav fixed-nav" id="main-nav">
       <div class="brand">Phạm <span>Đăng Trình</span></div>
       <ul class="nav-links">
         <li><a href="#home">Trang chủ</a></li>
         <li><a href="#about">Giới thiệu</a></li>
         <li><a href="#goals">Mục tiêu</a></li>
+        <li><a href="#interests">Sở thích</a></li>
         <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#awards">Chứng chỉ</a></li> 
         <li><a href="#projects">Dự án</a></li>
-        <li><a href="#awards">Giải thưởng</a></li> 
         <li><a href="#contact">Liên hệ</a></li>
       </ul>
     </nav>
 
     <header id="home" class="hero">
       <div class="hero-left">
-        <h1 class="name">Phạm Đăng <span>Trình</span></h1>
-        <p class="title">Data Analyst • AI Enthusiast • Web Developer</p>
+        <h1 class="name">
+            <span class="typewriter-text" data-text="Phạm Đăng Trình"></span>
+        </h1>
+        <p class="title">
+            <span class="typewriter-text" data-text="Data Analyst • AI Enthusiast • Web Developer"></span>
+        </p>
         <p class="birth">Sinh: <strong>30/08/2004</strong></p>
         <div class="hero-cta">
           <button id="playBtn" class="btn ghost">🎧 Lofi Chill</button>
@@ -135,18 +140,130 @@
 
   <audio id="bgAudio" loop preload="none" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_46a1b2a205.mp3?filename=lofi-study-112191.mp3"></audio>
   <script>
-    const playBtn = document.getElementById('playBtn');
-    const audio = document.getElementById('bgAudio');
-    let playing = false;
-    playBtn.addEventListener('click', () => {
-      if (!playing) {
-        audio.play();
-        playBtn.textContent = '⏸ Tắt nhạc';
-      } else {
-        audio.pause();
-        playBtn.textContent = '🎧 Lofi Chill';
-      }
-      playing = !playing;
+    // =========================================
+    // 1. HIỆU ỨNG GÕ CHỮ (TYPEWRITER EFFECT)
+    // =========================================
+    function typewriterEffect(element, text, speed) {
+      return new Promise(resolve => {
+        let i = 0;
+        element.textContent = ''; // Xóa nội dung ban đầu
+        
+        function type() {
+          if (i < text.length) {
+            // Thêm thẻ <span> cho phần Tên riêng 'Đăng Trình' (tùy chỉnh vị trí ký tự)
+            if (text === "Phạm Đăng Trình" && i >= 5) { 
+                element.innerHTML = text.substring(0, 5) + '<span>' + text.substring(5, i + 1) + '</span>';
+            } else {
+                 element.textContent += text.charAt(i);
+            }
+            i++;
+            setTimeout(type, speed);
+          } else {
+            resolve(); // Hoàn thành khi hết chữ
+          }
+        }
+        type();
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", async function() {
+        const typewriterElements = document.querySelectorAll('.typewriter-text');
+        
+        // Kích hoạt hiệu ứng gõ chữ tuần tự
+        const nameElement = typewriterElements[0];
+        const titleElement = typewriterElements[1];
+
+        const originalName = nameElement.getAttribute('data-text');
+        const originalTitle = titleElement.getAttribute('data-text');
+
+        // Bắt đầu gõ tên (tốc độ 80ms/ký tự)
+        await typewriterEffect(nameElement, originalName, 80);
+        
+        // Bắt đầu gõ tiêu đề (tốc độ 50ms/ký tự)
+        await typewriterEffect(titleElement, originalTitle, 50);
+
+
+        // =========================================
+        // 2. HIỆU ỨNG SCROLL ANIMATION (TRƯỢT LÊN)
+        // =========================================
+        const sections = document.querySelectorAll('main .card');
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+        
+        
+        // =========================================
+        // 3. HIỆU ỨNG STICKY NAV & ACTIVE LINK
+        // =========================================
+        const navLinks = document.querySelectorAll('.nav-links a');
+        const allSections = document.querySelectorAll('#home, main section'); 
+        const navHeight = 80; // Chiều cao thanh nav
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            let scrollPosition = window.pageYOffset;
+            
+            // Xử lý section 'home' (header)
+            if (scrollPosition < allSections[1].offsetTop - navHeight) { 
+                current = 'home';
+            } else {
+                // Lặp qua từng section để xác định section hiện tại
+                allSections.forEach(section => {
+                    const sectionTop = section.offsetTop - navHeight - 1; 
+                    if (scrollPosition >= sectionTop) {
+                        current = section.getAttribute('id');
+                    }
+                });
+            }
+
+            // Cập nhật trạng thái active cho các link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.href.includes('#' + current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Kích hoạt link #home khi vừa load trang
+        document.querySelector('.nav-links a[href="#home"]').classList.add('active');
+
+
+        // =========================================
+        // 4. HIỆU ỨNG LOFI CHILL (GIỮ NGUYÊN)
+        // =========================================
+        const playBtn = document.getElementById('playBtn');
+        const audio = document.getElementById('bgAudio');
+        let playing = false;
+        
+        if (playBtn) {
+            playBtn.addEventListener('click', () => {
+              if (!playing) {
+                audio.play();
+                playBtn.textContent = '⏸ Tắt nhạc';
+              } else {
+                audio.pause();
+                playBtn.textContent = '🎧 Lofi Chill';
+              }
+              playing = !playing;
+            });
+        }
     });
   </script>
 </body>

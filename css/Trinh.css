@@ -25,6 +25,10 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.7;
   font-size: 16px; 
+  position: relative;
+  overflow-x: hidden; 
+  /* THÊM PADDING TRÊN ĐỂ NỘI DUNG KHÔNG BỊ THANH FIXED NAV CHE */
+  padding-top: 80px; 
 }
 
 /* Custom Scrollbar */
@@ -41,14 +45,25 @@ body {
 /* Container */
 .container {max-width: 1280px; margin: 0 auto; padding: 0 30px;} 
 
-/* NAV */
+/* =========================================
+   NAV - THANH CỐ ĐỊNH & ACTIVE LINK
+   ========================================= */
+.nav.fixed-nav {
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; 
+    background: var(--bg); 
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    margin-bottom: 0; 
+}
 .nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 25px 0;
   border-bottom: 1px solid var(--border-dark);
-  margin-bottom: 20px;
 }
 .nav .brand {
   font-size: 28px;
@@ -68,6 +83,16 @@ body {
   transition: color .4s, text-shadow .4s;
   padding-bottom: 6px;
 }
+/* Hiệu ứng Thanh follow (Active Link) */
+.nav-links a.active {
+    color: var(--neon);
+    text-shadow: 0 0 15px rgba(51, 234, 255, 0.8);
+}
+.nav-links a.active::after {
+    width: 100%;
+    transition: none; /* Thanh active không cần transition */
+}
+/* Hiệu ứng Hover */
 .nav-links a:hover {
   color: var(--neon);
   text-shadow: 0 0 15px rgba(51, 234, 255, 0.8);
@@ -85,6 +110,36 @@ body {
 }
 .nav-links a:hover::after {width: 100%;}
 
+
+/* =========================================
+   HIỆU ỨNG GÕ CHỮ (TYPEWRITER) & CON TRỎ
+   ========================================= */
+.typewriter-text {
+  display: inline-block;
+  overflow: hidden; 
+  white-space: nowrap; 
+  border-right: 3px solid var(--neon); 
+  padding-right: 5px;
+  animation: typing-cursor 0.75s step-end infinite;
+}
+.typewriter-text:not(.is-typing) {
+  border-right: none;
+}
+@keyframes typing-cursor {
+  from, to { border-color: transparent; }
+  50% { border-color: var(--neon); }
+}
+.name .typewriter-text {
+    color: var(--text-primary);
+}
+/* Làm nổi bật phần tên riêng Đăng Trình */
+.name .typewriter-text span { 
+    color: var(--neon);
+}
+.title .typewriter-text {
+    color: var(--accent);
+}
+
 /* HERO SECTION */
 .hero {
   display: flex;
@@ -100,7 +155,6 @@ body {
 }
 .hero-left {flex: 1 1 500px;}
 .hero-right {flex: 0 1 380px; display: flex; justify-content: center; align-items: center;}
-
 .name {
   font-size: 64px; 
   font-weight: 800; 
@@ -210,7 +264,7 @@ body {
   100%{background-position:0% 50%;}
 }
 
-/* Section Cards */
+/* Section Cards & Scroll Animation */
 main {padding-bottom: 80px;}
 .card {
   background: var(--panel);
@@ -220,6 +274,15 @@ main {padding-bottom: 80px;}
   border: 1px solid var(--border-dark);
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.35); 
   transition: transform .3s var(--timing-fn);
+  
+  /* HIỆU ỨNG SCROLL ANIMATION */
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 .card:hover {
     transform: translateY(-5px); 
@@ -255,7 +318,7 @@ main {padding-bottom: 80px;}
 .list-bullet li {
     position: relative;
     margin-bottom: 15px; 
-    padding-left: 35px; /* Tăng khoảng cách cho biểu tượng */
+    padding-left: 35px;
     font-size: 17px;
     color: var(--text-secondary);
 }
@@ -264,21 +327,18 @@ main {padding-bottom: 80px;}
     left: 0;
     color: var(--neon);
     font-weight: 700;
-    font-size: 20px; /* Kích thước biểu tượng lớn hơn */
+    font-size: 20px;
     line-height: 1.6;
     text-shadow: 0 0 8px var(--neon);
 }
-/* Ký hiệu cho Mục tiêu cá nhân */
 .list-bullet.star li::before {
     content: '★'; 
     font-size: 18px;
 }
-/* Ký hiệu cho Chứng chỉ */
 .list-bullet.certificate li::before {
     content: '📜'; 
     font-size: 20px;
 }
-/* Ký hiệu cho Giải thưởng */
 .list-bullet.trophy li::before {
     content: '🏆'; 
     font-size: 20px;
@@ -313,7 +373,6 @@ main {padding-bottom: 80px;}
 .skills-grid {display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;} 
 .skill span {
   font-size: 17px;
-  /* Đảm bảo màu chữ kỹ năng vẫn là màu phụ */
   color: var(--text-secondary);
   display: block;
   margin-bottom: 8px;
@@ -321,19 +380,17 @@ main {padding-bottom: 80px;}
 }
 .bar {
   height: 14px; 
-  width: 100%; /* Cần có width 100% */
-  background: rgba(255,255,255,0.08); /* Màu nền tối cho thanh */
+  width: 100%; 
+  background: rgba(255,255,255,0.08); 
   border-radius: 7px;
   overflow: hidden;
   box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.8);
 }
 .bar div {
   height: 100%;
-  /* DÒNG NÀY RẤT QUAN TRỌNG: Định nghĩa màu gradient cho thanh */
   background: linear-gradient(90deg, var(--neon), var(--accent)); 
   border-radius: 7px;
   transition: width 1.5s ease-out; 
-  /* Thêm hiệu ứng glow cho thanh kỹ năng */
   box-shadow: 0 0 10px rgba(51, 234, 255, 0.5); 
 }
 
@@ -417,11 +474,7 @@ main {padding-bottom: 80px;}
   opacity: 0.7;
 }
 
-/* HIỆU ỨNG BONG BÓNG BAY LÊN (NEON BACKGROUND) - Giữ nguyên */
-body {
-    position: relative;
-    overflow-x: hidden; 
-}
+/* HIỆU ỨNG BONG BÓNG BAY LÊN (NEON BACKGROUND) */
 body::after {
     content: '';
     position: absolute;
@@ -444,45 +497,22 @@ body::after {
     pointer-events: none;
     background: transparent;
     box-shadow: 
-        40vw 10vh 20px 0 var(--neon),
-        25vw 50vh 30px 0 var(--accent),
-        60vw 30vh 15px 0 var(--neon),
-        80vw 80vh 25px 0 var(--accent),
-        10vw 90vh 18px 0 var(--neon),
-        95vw 5vh 22px 0 var(--accent),
-        5vw 50vh 20px 0 var(--neon),
-        70vw 70vh 10px 0 var(--accent),
-        50vw 15vh 28px 0 var(--neon),
-        15vw 35vh 15px 0 var(--accent),
-        85vw 25vh 18px 0 var(--neon),
-        35vw 75vh 22px 0 var(--accent),
-        45vw 95vh 12px 0 var(--neon),
-        75vw 40vh 30px 0 var(--accent),
-        55vw 60vh 18px 0 var(--neon);
+        40vw 10vh 20px 0 var(--neon), 25vw 50vh 30px 0 var(--accent), 60vw 30vh 15px 0 var(--neon),
+        80vw 80vh 25px 0 var(--accent), 10vw 90vh 18px 0 var(--neon), 95vw 5vh 22px 0 var(--accent),
+        5vw 50vh 20px 0 var(--neon), 70vw 70vh 10px 0 var(--accent), 50vw 15vh 28px 0 var(--neon),
+        15vw 35vh 15px 0 var(--accent), 85vw 25vh 18px 0 var(--neon), 35vw 75vh 22px 0 var(--accent),
+        45vw 95vh 12px 0 var(--neon), 75vw 40vh 30px 0 var(--accent), 55vw 60vh 18px 0 var(--neon);
 
     animation: moveBubbles 40s linear infinite, glowBubbles 5s alternate infinite;
 }
 @keyframes moveBubbles {
-    0% {
-        transform: translateY(0) rotate(0deg) scale(1);
-    }
-    100% {
-        transform: translateY(-100vh) rotate(360deg) scale(1.1);
-    }
+    0% {transform: translateY(0) rotate(0deg) scale(1);}
+    100% {transform: translateY(-100vh) rotate(360deg) scale(1.1);}
 }
 @keyframes glowBubbles {
-    0% {
-        opacity: 0.6;
-        filter: brightness(1);
-    }
-    50% {
-        opacity: 0.8;
-        filter: brightness(1.5);
-    }
-    100% {
-        opacity: 0.6;
-        filter: brightness(1);
-    }
+    0% {opacity: 0.6; filter: brightness(1);}
+    50% {opacity: 0.8; filter: brightness(1.5);}
+    100% {opacity: 0.6; filter: brightness(1);}
 }
 
 
