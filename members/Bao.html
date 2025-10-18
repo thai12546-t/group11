@@ -2,56 +2,98 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <title>Portfolio Thành viên</title>
+  <title>Portfolio - Tôn Thất Bảo</title>
   <link rel="stylesheet" href="../css/Bao.css">
 </head>
 <body>
-  <header class="banner fade-in">
-    <img src="../images/avatar Bao.jpg" alt="Ảnh cá nhân" class="zoom-in">
-    <h1 class="slide-down">Tên Thành Viên</h1>
-    <p class="slide-up">Vị trí: Developer</p>
+  <!-- ======== THANH MENU ======== -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <h2 class="logo">Tôn Thất Bảo<span>.</span></h2>
+      <ul class="nav-links">
+        <li><a href="#about">Giới thiệu</a></li>
+        <li><a href="#skills">Kỹ năng</a></li>
+        <li><a href="#projects">Dự án</a></li>
+        <li><a href="#contact">Liên hệ</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ======== HERO SECTION ======== -->
+  <header class="hero">
+    <div class="hero-content">
+      <img src="../images/avatarBao.jpg" alt="Ảnh cá nhân" class="avatar">
+      <h1>Tôn Thất Bảo</h1>
+      <p class="typed-text">Data Analyst | AI Developer | Web Engineer</p>
+      <a href="#about" class="hero-btn">Khám phá thêm</a>
+    </div>
   </header>
 
+  <!-- ======== NỘI DUNG CHÍNH ======== -->
   <main>
-    <section class="section fade-in">
+    <!-- Thông tin cá nhân -->
+    <section id="about" class="section fade-in">
       <h2>Thông tin cá nhân</h2>
-      <p>Họ tên: Tôn Thất Bảo</p>
-      <p>Ngày sinh: 02/07/2004</p>
-      <p>Giới tính: Nam</p>
+      <p><b>Họ tên:</b> Tôn Thất Bảo</p>
+      <p><b>Ngày sinh:</b> 02/07/2004</p>
+      <p><b>Giới tính:</b> Nam</p>
+      <p>
+        Sinh viên Khoa học Dữ liệu tại Đại học Giao Thông Vận Tải, đam mê công nghệ và trí tuệ nhân tạo. 
+        Tôi luôn hướng đến việc ứng dụng AI và Machine Learning để tạo ra các giải pháp thực tiễn, 
+        giúp nâng cao hiệu quả và tối ưu hóa quy trình.
+      </p>
     </section>
 
-    <section class="section slide-up">
-      <h2>Mục tiêu nghề nghiệp</h2>
-      <p>Là một sinh viên Khoa học Dữ liệu tại Đại học Giao Thông Vận Tải, tôi mong muốn phát triển chuyên sâu
-         trong lĩnh vực Trí tuệ Nhân tạo (AI) và Thị giác máy tính (Computer Vision). Mục tiêu của tôi là trở thành 
-         một kỹ sư dữ liệu hoặc kỹ sư AI chuyên nghiệp, có khả năng xây dựng các hệ thống thông minh ứng dụng vào 
-        đời sống thực tế như giám sát, tự động hóa, và tối ưu hóa quy trình.</p>
-    </section>
-
+    <!-- Mục tiêu nghề nghiệp -->
     <section class="section fade-in">
+      <h2>Mục tiêu nghề nghiệp</h2>
+      <p>
+        Tôi mong muốn phát triển chuyên sâu trong lĩnh vực Trí tuệ Nhân tạo (AI) và Thị giác máy tính (Computer Vision),
+        trở thành kỹ sư dữ liệu chuyên nghiệp có thể thiết kế, triển khai và tối ưu các hệ thống thông minh phục vụ đời sống
+        và doanh nghiệp. Song song đó, tôi không ngừng học hỏi để hoàn thiện kỹ năng lập trình web nhằm đưa mô hình AI vào thực tế.
+      </p>
+    </section>
+
+    <!-- Kỹ năng -->
+    <section id="skills" class="section fade-in">
       <h2>Kỹ năng & Ngôn ngữ</h2>
       <ul>
-        <li>Sử dụng cơ bản C#, HTML, CSS, JavaScript</li>
-        <li>Thành thạo Python </li>
-        <li> </li>
-        <li>Tiếng Anh giao tiếp</li>
+        <li><b>Python:</b> Thành thạo xử lý dữ liệu, thống kê, xây dựng mô hình AI với NumPy, Pandas, TensorFlow, OpenCV.</li>
+        <li><b>Web:</b> HTML, CSS, JavaScript, Django, ASP.NET Core – có thể tự xây dựng giao diện web hoàn chỉnh.</li>
+        <li><b>Cơ sở dữ liệu:</b> MySQL, SQL Server – thiết kế bảng, lập chỉ mục, tối ưu truy vấn.</li>
+        <li><b>Công cụ:</b> Visual Studio Code, Jupyter Notebook, Google Colab, aaPanel.</li>
+        <li><b>Git/GitHub:</b> Thành thạo quản lý mã nguồn, tạo nhánh, xử lý xung đột, làm việc nhóm hiệu quả.</li>
+        <li><b>Kỹ năng mềm:</b> Tư duy logic, học nhanh, tự nghiên cứu, kỹ năng thuyết trình và làm việc nhóm tốt.</li>
+        <li><b>Ngôn ngữ:</b> Tiếng Anh B1 – giao tiếp cơ bản, đọc hiểu tài liệu kỹ thuật, viết báo cáo.</li>
       </ul>
     </section>
 
-    <section class="section fade-in">
+    <!-- Dự án -->
+    <section id="projects" class="section fade-in">
       <h2>Dự án</h2>
-      <p>Portfolio cá nhân - Thiết kế và lập trình toàn bộ giao diện bằng HTML, CSS và animation.</p>
+      <ul>
+        <li><b>Portfolio cá nhân:</b> Thiết kế và lập trình toàn bộ giao diện bằng HTML, CSS và animation.</li>
+        <li><b>Hệ thống cảnh báo buồn ngủ khi lái xe:</b> Ứng dụng AI và OpenCV để phát hiện trạng thái tài xế.
+          <a href="https://github.com/baohandsomeboiz/canhbaobuonngu" target="_blank">[GitHub]</a></li>
+        <li><b>Website quản lý cửa hàng điện thoại:</b> Xây dựng bằng ASP.NET Core, hỗ trợ quản lý sản phẩm và doanh thu.
+          <a href="https://github.com/baohandsomeboiz/duanwebcntt/tree/main/MobileShoppeWeb" target="_blank">[GitHub]</a></li>
+        <li><b>Hiện đang làm một dự án phân loại rác thải tái chế:</b> Dùng mô hình ResNet50 Fine-tune để nhận diện loại rác trong tái chế.</li>
+      </ul>
     </section>
 
-    <section class="section fade-in">
+    <!-- Liên hệ -->
+    <section id="contact" class="section fade-in">
       <h2>Liên hệ</h2>
-      <p>Facebook: <a href="#">fb.com/thanhvien</a></p>
-      <p>Github: <a href="#">github.com/thanhvien</a></p>
+      <p><b>Facebook:</b> <a href="https://www.facebook.com/share/1Bcwy4bEsy/?mibextid=wwXIfr" target="_blank">fb.com/tonthatbao</a></p>
+      <p><b>GitHub:</b> <a href="https://github.com/baohandsomeboiz" target="_blank">github.com/baohandsomeboiz</a></p>
+      <p><b>Số điện thoại:</b> 0385501796</p>
+      <p><b>Email:</b> tonthatbao020704@gmail.com</p>
     </section>
   </main>
 
-  <footer class="fade-in">
-    <p>© 2025 Portfolio Thành Viên</p>
+  <!-- ======== FOOTER ======== -->
+  <footer>
+    <p>© 2025 Tôn Thất Bảo | Portfolio cá nhân</p>
   </footer>
 </body>
 </html>
