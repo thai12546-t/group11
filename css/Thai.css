@@ -9,9 +9,9 @@
   --bg-secondary: #1a1f3a;
   --text-primary: #f2f2f2;
   --text-secondary: #a6a6a6;
-  --accent-cyan: #00d9ff;
-  --accent-blue: #0099ff;
-  --accent-glow: rgba(0, 217, 255, 0.3);
+  --accent-cyan: #ff9f43;  /* cam đào nhẹ */
+  --accent-blue: #ff6b81;  /* hồng san hô */
+  --accent-glow: rgba(255, 153, 102, 0.25); /* ánh sáng nhẹ */
   --border-color: #2a2f4a;
   --transition: all 0.3s ease;
 }
@@ -215,7 +215,7 @@ body {
 
 .photo {
   width: 100%;
-  height: 150px;
+  height: 170px;
   object-fit: cover;
   border-radius: 10px;
   border: 2px solid var(--border-color);
@@ -369,9 +369,9 @@ body {
 
 /* 💼 Projects */
 .projects-grid {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 20px;
 }
 
 .project-card {
@@ -551,4 +551,53 @@ body {
   .hero-subtitle { font-size: 1rem; }
   .section-title { font-size: 1.7rem; }
   .nav-menu { flex-wrap: wrap; gap: 1rem; }
+}
+
+/* 🌈 Hiệu ứng neon đổi màu mượt */
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* 💫 Gradient động cho chữ chính */
+.nav-logo,
+.hero-title,
+.section-title,
+.goal-number {
+  background: linear-gradient(270deg, #ff9f43, #ff6b81, #d67fff);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientFlow 8s ease infinite;
+}
+
+/* ✨ Nút bấm chuyển màu động */
+.cta-button,
+.submit-button {
+  background: linear-gradient(135deg, #ff9f43, #ff6b81, #d67fff);
+  background-size: 300% 300%;
+  animation: gradientFlow 6s ease infinite;
+  box-shadow: 0 0 20px rgba(255, 153, 102, 0.25);
+}
+
+/* 🌌 Nền Hero đổi màu nhẹ nhàng */
+.hero {
+  background: linear-gradient(-45deg, #0a0e27, #1a1f3a, #2a2f4a, #0a0e27);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
+}
+
+/* 🔥 Khi hover vào card – thêm hiệu ứng đèn đổi màu */
+.goal-card:hover,
+.hobby-card:hover,
+.project-card:hover,
+.certificate-card:hover {
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 15px #ff9f43; border-color: #ff9f43; }
+  50% { box-shadow: 0 0 25px #ff6b81; border-color: #ff6b81; }
+  100% { box-shadow: 0 0 15px #ff9f43; border-color: #ff9f43; }
 }
