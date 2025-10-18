@@ -1,53 +1,249 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8">
-  <title>Portfolio Thành viên</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Xuân Bách — Trang Giới Thiệu Cá Nhân</title>
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="Bach.css" />
 </head>
 <body>
-  <header class="banner fade-in">
-    <img src="../img/member4.jpg" alt="Ảnh cá nhân" class="zoom-in">
-    <h1 class="slide-down">Tên Thành Viên</h1>
-    <p class="slide-up">Vị trí: Developer</p>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <h1>Xuân Bách</h1>
+        <p class="tagline">DL22CLC — Data Science</p>
+      </div>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#about">Giới thiệu</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#projects">Dự án</a>
+        <a href="#contact">Liên hệ</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="section fade-in">
-      <h2>Thông tin cá nhân</h2>
-      <p>Họ tên: ................................</p>
-      <p>Ngày sinh: ................................</p>
-      <p>Giới tính: ................................</p>
+    <!-- HERO / PROFILE -->
+    <section id="about" class="hero container reveal" data-reveal>
+      <div class="profile-card" data-float-bg>
+        <div class="photo-wrap" data-tilt>
+          <!-- LƯU Ý: dùng dấu / thay vì \. Thay đường dẫn ảnh thực tế -->
+          <img src="image/Bach.jpg"
+               alt="Ảnh Xuân Bách"
+               class="profile-photo"
+               onerror="this.onerror=null;this.src='https://via.placeholder.com/400x400/083a8b/ffffff?text=No+Photo';">
+        </div>
+
+        <div class="profile-info">
+          <h2>Lương Xuân Bách</h2>
+          <p class="muted">Sinh: 03/01/2004 &nbsp;•&nbsp; TP Hồ Chí Minh</p>
+
+          <p class="bio">
+            Xin chào! Mình là Lương Xuân Bách — Sinh viên Khóa K22, Đại học Giao Thông Vận Tải TP.HCM.
+            Mình tập trung về Khoa Học Dữ Liệu, Machine Learning và ứng dụng cho nông nghiệp.
+          </p>
+
+          <div class="quick-list">
+            <div><strong>Chuyên ngành:</strong> Khoa Học Dữ Liệu</div>
+            <div><strong>Sở thích:</strong> Đọc sách, bóng đá, code</div>
+            <div><strong>Tiếng Anh:</strong> B1 — giao tiếp & đọc tài liệu kỹ thuật</div>
+          </div>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#projects">Xem dự án</a>
+            <a class="btn ghost" href="#contact">Liên hệ</a>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section slide-up">
-      <h2>Mục tiêu nghề nghiệp</h2>
-      <p>Mong muốn phát triển kỹ năng chuyên môn và đóng góp vào các dự án sáng tạo.</p>
+    <!-- SKILLS -->
+    <section id="skills" class="container section reveal" data-reveal>
+      <h3 class="section-title">Kỹ năng & Công nghệ</h3>
+      <div class="skills-grid">
+        <div class="skill-card" tabindex="0">
+          <h4>Ngôn ngữ lập trình</h4>
+          <ul>
+            <li>Python (Pandas, NumPy)</li>
+            <li>JavaScript</li>
+            <li>HTML5, CSS3</li>
+          </ul>
+        </div>
+
+        <div class="skill-card" tabindex="0">
+          <h4>Thư viện & Framework</h4>
+          <ul>
+            <li>Scikit-learn, TensorFlow / Keras</li>
+            <li>React.js (cơ bản)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card" tabindex="0">
+          <h4>Công cụ</h4>
+          <ul>
+            <li>Git, GitHub</li>
+            <li>Jupyter / VS Code</li>
+            <li>Docker (cơ bản)</li>
+          </ul>
+        </div>
+
+        <div class="skill-card" tabindex="0">
+          <h4>Tiếng Anh</h4>
+          <div class="progress">
+            <div class="bar" style="--value:75%">Nghe/Nói: 75%</div>
+          </div>
+          <div class="progress">
+            <div class="bar" style="--value:85%">Đọc/Tài liệu: 85%</div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="section fade-in">
-      <h2>Kỹ năng & Ngôn ngữ</h2>
-      <ul>
-        <li>HTML, CSS, JavaScript</li>
-        <li>Python / C# / Java</li>
-        <li>Tiếng Anh giao tiếp</li>
-      </ul>
+    <!-- PROJECTS -->
+    <section id="projects" class="container section reveal" data-reveal>
+      <h3 class="section-title">Các dự án nổi bật</h3>
+
+      <div class="projects-grid">
+        <article class="project" tabindex="0" data-tilt-card>
+          <h4>Portfolio cá nhân</h4>
+          <p class="muted">React, Vite — Responsive</p>
+          <p>Trang portfolio trưng bày dự án và CV trực tuyến.</p>
+          <p class="tag">GitHub: <a href="https://github.com/XuanBach0301" target="_blank" rel="noopener">github.com/XuanBach0301</a></p>
+        </article>
+
+        <article class="project" tabindex="0" data-tilt-card>
+          <h4>Web shop bán quần áo</h4>
+          <p class="muted">PHP, MySQL</p>
+          <p>Web bán hàng trực tuyến — backend cơ bản và thanh toán thử nghiệm.</p>
+          <p class="tag">Repo: <a href="https://github.com/uakp98/shoe_store" target="_blank" rel="noopener">github.com/uakp98/shoe_store</a></p>
+        </article>
+
+        <article class="project" tabindex="0" data-tilt-card>
+          <h4>Phân loại bệnh cây cà chua</h4>
+          <p class="muted">MobileNetV2 (Transfer Learning)</p>
+          <p>Mô hình phân loại bệnh lá cà chua nhằm hỗ trợ nông dân phát hiện sớm.</p>
+          <p class="tag">Mô tả: augmentation + fine-tuning để tối ưu accuracy.</p>
+        </article>
+      </div>
     </section>
 
-    <section class="section fade-in">
-      <h2>Dự án</h2>
-      <p>Portfolio cá nhân - Thiết kế và lập trình toàn bộ giao diện bằng HTML, CSS và animation.</p>
-    </section>
-
-    <section class="section fade-in">
-      <h2>Liên hệ</h2>
-      <p>Facebook: <a href="#">fb.com/thanhvien</a></p>
-      <p>Github: <a href="#">github.com/thanhvien</a></p>
+    <!-- CONTACT (CHỈ CÁ NHÂN) -->
+    <section id="contact" class="container section contact-section reveal" data-reveal>
+      <h3 class="section-title">Liên hệ</h3>
+      <div class="contact-grid">
+        <div class="contact-card single" tabindex="0">
+          <h4>Thông tin liên hệ</h4>
+          <p><strong>Email:</strong> <a href="mailto:bachluong1230301@gmail.com">bachluong1230301@gmail.com</a></p>
+          <p><strong>Số điện thoại:</strong> <a href="tel:+84865530038">+84 865 530 038</a></p>
+          <p><strong>GitHub:</strong> <a href="https://github.com/XuanBach0301" target="_blank" rel="noopener">github.com/XuanBach0301</a></p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="fade-in">
-    <p>© 2025 Portfolio Thành Viên</p>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Lương Xuân Bách — All rights reserved.</p>
+      <p class="muted">Thiết kế và phát triển bởi Xuân Bách</p>
+    </div>
   </footer>
+
+  <!-- JS: animations & interactivity -->
+  <script>
+    // set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scroll is enabled by CSS (scroll-behavior). Add active nav highlight via IntersectionObserver
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav a');
+
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        const id = entry.target.id;
+        const link = document.querySelector('.nav a[href="#' + id + '"]');
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => a.classList.remove('active'));
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { root: null, rootMargin: '-30% 0px -40% 0px', threshold: 0 });
+
+    sections.forEach(s => io.observe(s));
+
+    // Reveal on scroll (adds in-view class)
+    const reveals = document.querySelectorAll('[data-reveal]');
+    const ro = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('in-view');
+          ro.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(r => ro.observe(r));
+
+    // Tilt effect for profile image and project cards (subtle)
+    function bindTilt(selector, maxTilt = 8) {
+      const el = document.querySelector(selector);
+      if (!el) return;
+      el.addEventListener('mousemove', (ev) => {
+        const rect = el.getBoundingClientRect();
+        const x = (ev.clientX - rect.left) / rect.width; // 0..1
+        const y = (ev.clientY - rect.top) / rect.height;
+        const tiltX = (y - 0.5) * maxTilt * -1;
+        const tiltY = (x - 0.5) * maxTilt;
+        el.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) translateZ(6px)`;
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.transform = '';
+      });
+    }
+    // bind to profile photo wrapper and each card with data-tilt-card
+    document.querySelectorAll('[data-tilt]').forEach(el => bindTilt('[data-tilt]'));
+    document.querySelectorAll('[data-tilt-card]').forEach((card) => {
+      // small wrapper since bindTilt expects selector string; implement per-element:
+      card.addEventListener('mousemove', (ev) => {
+        const rect = card.getBoundingClientRect();
+        const x = (ev.clientX - rect.left) / rect.width;
+        const y = (ev.clientY - rect.top) / rect.height;
+        const tiltX = (y - 0.5) * -6;
+        const tiltY = (x - 0.5) * 6;
+        card.style.transform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // Background gradient parallax following cursor for elements with data-float-bg
+    document.querySelectorAll('[data-float-bg]').forEach(el => {
+      el.addEventListener('mousemove', (ev) => {
+        const rect = el.getBoundingClientRect();
+        const x = ((ev.clientX - rect.left) / rect.width) * 100;
+        const y = ((ev.clientY - rect.top) / rect.height) * 100;
+        el.style.setProperty('--gx', x + '%');
+        el.style.setProperty('--gy', y + '%');
+      });
+      el.addEventListener('mouseleave', () => {
+        el.style.setProperty('--gx', '50%');
+        el.style.setProperty('--gy', '50%');
+      });
+    });
+
+    // keyboard accessibility: allow Enter on project cards to open first link inside (if any)
+    document.querySelectorAll('.project[tabindex]').forEach(p => {
+      p.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const link = p.querySelector('a');
+          if (link) link.click();
+        }
+      });
+    });
+  </script>
 </body>
 </html>
