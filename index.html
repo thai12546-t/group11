@@ -7,9 +7,9 @@
 </head>
 <body>
   <!-- Banner -->
-  <header class="banner fade-in">
-    <img src="img/group-banner.jpg" alt="Banner nhóm" class="zoom-in">
-    <h1 class="slide-down">PORTFOLIO WEB DEVELOPER</h1>
+  <header class="banner">
+    <div class="overlay"></div>
+    <h1 class="typing">PORTFOLIO WEB DEVELOPER</h1>
     <p class="slide-up">"Sáng tạo - Học hỏi - Phát triển"</p>
   </header>
 
@@ -23,55 +23,59 @@
     </ul>
   </nav>
 
-  <!-- Layout nội dung -->
+  <!-- Nội dung chính -->
   <main>
-    <section id="about" class="section fade-in">
+    <section id="about" class="section fade">
       <h2>Về Nhóm</h2>
       <p>Nhóm gồm 5 thành viên, cùng thực hiện dự án portfolio cá nhân sử dụng HTML, CSS3 và các hiệu ứng động đặc sắc.</p>
     </section>
 
-    <section id="members" class="section members">
+    <section id="members" class="section fade">
       <h2 class="glow-text">Các thành viên</h2>
       <div class="member-grid">
-        <div class="member hover-float">
+        <div class="member">
           <img src="img/member1.jpg" alt="Thành viên 1">
           <h3>Nguyễn Văn A</h3>
           <p>Front-End Developer</p>
           <a href="members/Bao.html" class="btn pulse">Xem Portfolio</a>
         </div>
-        <div class="member hover-float">
+
+        <div class="member">
           <img src="img/member2.jpg" alt="Thành viên 2">
           <h3>Trần Thị B</h3>
           <p>UI/UX Designer</p>
-          <a href="members/member2.html" class="btn pulse">Xem Portfolio</a>
+          <a href="members/member2.html" class="btn">Xem Portfolio</a>
         </div>
-        <div class="member hover-float">
+
+        <div class="member">
           <img src="img/member3.jpg" alt="Thành viên 3">
           <h3>Lê Văn C</h3>
           <p>Back-End Developer</p>
-          <a href="members/member3.html" class="btn pulse">Xem Portfolio</a>
+          <a href="members/member3.html" class="btn">Xem Portfolio</a>
         </div>
-        <div class="member hover-float">
+
+        <div class="member">
           <img src="img/member4.jpg" alt="Thành viên 4">
           <h3>Phạm Thị D</h3>
           <p>Data Analyst</p>
-          <a href="members/member4.html" class="btn pulse">Xem Portfolio</a>
+          <a href="members/member4.html" class="btn">Xem Portfolio</a>
         </div>
-        <div class="member hover-float">
+
+        <div class="member">
           <img src="img/member5.jpg" alt="Thành viên 5">
           <h3>Hoàng Văn E</h3>
           <p>AI Engineer</p>
-          <a href="members/member5.html" class="btn pulse">Xem Portfolio</a>
+          <a href="members/member5.html" class="btn">Xem Portfolio</a>
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section fade-in">
+    <section id="projects" class="section fade">
       <h2 class="slide-down">Dự án nhóm</h2>
       <p>Portfolio tổng hợp và trình bày dự án học kỳ của từng thành viên, thể hiện khả năng lập trình và thiết kế sáng tạo.</p>
     </section>
 
-    <section id="contact" class="section fade-in">
+    <section id="contact" class="section fade">
       <h2>Liên hệ</h2>
       <ul>
         <li><a href="https://github.com/">Github nhóm</a></li>
@@ -81,8 +85,19 @@
     </section>
   </main>
 
-  <footer class="fade-in">
+  <!-- Footer -->
+  <footer>
     <p>© 2025 Nhóm Portfolio Web Developer</p>
   </footer>
+
+  <!-- Hiệu ứng xuất hiện khi cuộn -->
+  <script>
+  window.addEventListener("scroll", () => {
+    document.querySelectorAll(".fade").forEach(sec => {
+      const rect = sec.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 100) sec.classList.add("visible");
+    });
+  });
+  </script>
 </body>
 </html>

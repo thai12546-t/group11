@@ -1,3 +1,8 @@
+/* 🌌 Tổng thể */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Poppins', sans-serif;
   background: radial-gradient(circle at top, #0a0a0a, #000);
@@ -6,19 +11,60 @@ body {
   padding: 0;
   overflow-x: hidden;
 }
+
+/* ✨ Nền chuyển động năng lượng */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle, rgba(0,255,208,0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: moveBg 25s linear infinite;
+  z-index: 0;
+}
+@keyframes moveBg {
+  from { background-position: 0 0; }
+  to { background-position: 1000px 1000px; }
+}
+
+/* 🪐 Banner parallax + Neon glow */
 .banner {
   text-align: center;
-  background: linear-gradient(135deg, #00ffd0, #0066ff);
-  padding: 40px 20px;
-  color: #000;
-  box-shadow: 0 0 25px rgba(0, 255, 208, 0.5);
+  background: url('../img/group-banner.jpg') center/cover fixed;
+  padding: 100px 20px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
 }
-.banner img {
-  width: 100%;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  animation: zoomIn 2s ease;
+.banner .overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
 }
+.typing {
+  color: #00ffd0;
+  font-size: 2.8rem;
+  border-right: 3px solid #00ffd0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0;
+  animation: typing 4s steps(30, end) forwards, blink 0.8s infinite;
+  z-index: 2;
+  position: relative;
+}
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+@keyframes blink {
+  50% { border-color: transparent; }
+}
+.banner p {
+  font-size: 1.3rem;
+  animation: slideUp 2s ease;
+}
+
+/* 🔹 Navbar */
 .navbar {
   background: rgba(17, 17, 17, 0.9);
   padding: 12px;
@@ -27,12 +73,14 @@ body {
   top: 0;
   z-index: 100;
   backdrop-filter: blur(5px);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.4);
 }
 .navbar ul {
   list-style: none;
   display: flex;
   justify-content: center;
   gap: 24px;
+  flex-wrap: wrap;
 }
 .navbar a {
   color: #00ffd0;
@@ -42,11 +90,23 @@ body {
 .navbar a:hover {
   color: #fff;
   transform: scale(1.1);
+  text-shadow: 0 0 10px #00ffd0;
 }
+
+/* 🔸 Section + Scroll Animation */
 .section {
-  padding: 50px 60px;
+  padding: 60px 60px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
 }
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 👥 Member cards */
 .member-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -59,6 +119,19 @@ body {
   border-radius: 16px;
   box-shadow: 0 0 20px rgba(0, 255, 208, 0.2);
   transition: transform 0.4s, box-shadow 0.4s;
+  overflow: hidden;
+  position: relative;
+}
+.member::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.member:hover::after {
+  opacity: 1;
 }
 .member:hover {
   transform: translateY(-10px) scale(1.03);
@@ -68,60 +141,56 @@ body {
   width: 100%;
   border-radius: 12px;
   margin-bottom: 15px;
-  transition: 0.5s;
+  transition: transform 0.6s;
 }
-.member img:hover {
-  transform: scale(1.05) rotate(1deg);
+.member:hover img {
+  transform: scale(1.1);
 }
+
+/* 🌈 Nút gradient động */
 .btn {
   display: inline-block;
-  background: #00ffd0;
+  background: linear-gradient(90deg, #00ffd0, #08f7fe);
+  background-size: 200%;
   color: #000;
-  padding: 10px 20px;
+  padding: 10px 22px;
   border-radius: 8px;
   text-decoration: none;
-  transition: 0.4s;
+  transition: background-position 0.5s, transform 0.3s;
 }
 .btn:hover {
-  background: #08f7fe;
+  background-position: right;
   box-shadow: 0 0 15px #00ffd0;
   transform: scale(1.1);
 }
+
+/* 🧱 Footer */
 footer {
   text-align: center;
   padding: 25px;
   background: #111;
   color: #999;
-  margin-top: 50px;
+  margin-top: 60px;
 }
 
-/* Hiệu ứng animation */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideDown {
-  from { transform: translateY(-50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
+/* ⚡ Keyframes */
 @keyframes slideUp {
   from { transform: translateY(50px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
-@keyframes zoomIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-@keyframes pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
+
+/* 💫 Glow Text */
+.glow-text {
+  text-shadow: 0 0 10px #00ffd0, 0 0 20px #08f7fe;
 }
 
-/* Các class animation tiện dụng */
-.fade-in { animation: fadeIn 1.5s ease; }
-.slide-down { animation: slideDown 1.5s ease; }
-.slide-up { animation: slideUp 1.5s ease; }
-.zoom-in { animation: zoomIn 2s ease; }
-.pulse { animation: pulse 2s infinite; }
-.hover-float:hover { transform: translateY(-8px) scale(1.03); }
-.glow-text { text-shadow: 0 0 10px #00ffd0, 0 0 20px #08f7fe; }
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .section { padding: 40px 20px; }
+  .navbar ul { flex-direction: column; gap: 10px; }
+  .typing { font-size: 2rem; }
+}
+@media (max-width: 480px) {
+  .member-grid { grid-template-columns: 1fr; }
+  .btn { padding: 8px 16px; }
+}
