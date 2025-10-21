@@ -429,6 +429,53 @@ main {padding-bottom: 80px;}
   box-shadow: 0 0 10px rgba(51, 234, 255, 0.5); 
 }
 
+/* HIỆU ỨNG BONG BÓNG BAY LÊN (NEON BACKGROUND) (Tiêu chí 12) */
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2; 
+    background: transparent;
+    pointer-events: none; 
+}
+.container::before {
+    content: '';
+    position: fixed; /* Dùng fixed để hiệu ứng luôn visible khi cuộn */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Đảm bảo nó nằm dưới nội dung chính */
+    pointer-events: none;
+    background: transparent;
+    /* Định vị các bóng phát sáng (tạo từ box-shadow) */
+    box-shadow: 
+        40vw 10vh 20px 0 var(--neon), 25vw 50vh 30px 0 var(--accent), 60vw 30vh 15px 0 var(--neon),
+        80vw 80vh 25px 0 var(--accent), 10vw 90vh 18px 0 var(--neon), 95vw 5vh 22px 0 var(--accent),
+        5vw 50vh 20px 0 var(--neon), 70vw 70vh 10px 0 var(--accent), 50vw 15vh 28px 0 var(--neon),
+        15vw 35vh 15px 0 var(--accent), 85vw 25vh 18px 0 var(--neon), 35vw 75vh 22px 0 var(--accent),
+        45vw 95vh 12px 0 var(--neon), 75vw 40vh 30px 0 var(--accent), 55vw 60vh 18px 0 var(--neon);
+
+    /* Áp dụng Animation (Trôi và Phát sáng) */
+    filter: blur(8px); /* Tạo độ sâu và mờ ảo */
+    opacity: 0.5;
+    animation: moveBubbles 60s linear infinite, glowBubbles 8s alternate infinite;
+}
+@keyframes moveBubbles {
+    /* Animation Trôi lên và Xoay (Transform) */
+    0% {transform: translateY(0) rotate(0deg) scale(1);}
+    100% {transform: translateY(-150vh) rotate(360deg) scale(1.1);} 
+}
+@keyframes glowBubbles {
+    /* Animation Phát sáng (Opacity và Độ sáng) */
+    0% {opacity: 0.6; filter: brightness(1);}
+    50% {opacity: 0.8; filter: brightness(1.5);}
+    100% {opacity: 0.6; filter: brightness(1);}
+}
+
 /* Projects - CẢI TIẾN HIỆU ỨNG 3D HOVER XỊN XÒ */
 .grid {
     display: grid; 
