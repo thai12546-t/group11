@@ -1,6 +1,3 @@
-# File 1: index.html
-
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -8,12 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio | Trần Anh Thái</title>
   <link rel="stylesheet" href="..\css\Thai.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+/>
 </head>
 <body>
+  <!-- 🔝 Nút quay về đầu trang -->
+  <!-- 🔝 Nút quay về đầu trang -->
+  <a href="#home" class="back-to-top" title="Về đầu trang">
+    <i class="fa-solid fa-arrow-up"></i>
+  </a>
   <!-- ✅ Yêu cầu 1: Navbar theo thiết kế + highlight section đang xem -->
   <nav class="navbar">
     <div class="nav-container">
-      <div class="nav-logo">Trần Anh Thái</div>
+      <!-- <div class="nav-logo">Trần Anh Thái</div> -->
       <ul class="nav-menu">
         <li><a href="#home" class="nav-link active" data-section="home">Trang chủ</a></li>
         <li><a href="#about" class="nav-link" data-section="about">Thông tin</a></li>
@@ -29,7 +33,11 @@
 
   <!-- ✅ Yêu cầu 1: Banner/Hero có ảnh nền + CTA + animation -->
   <section id="home" class="hero">
+    
     <div class="hero-content">
+      <div class="hero-avatar">
+        <img src="..\images\Thai1.jpg" alt="Trần Anh Thái" />
+      </div>
       <h1 class="hero-title">Xin chào, mình là Thái</h1>
       <p class="hero-subtitle">Sinh viên CNTT • Web Dev & AI Engineer</p>
       <button class="cta-button" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">Xem hồ sơ</button>
@@ -45,18 +53,36 @@
       <!-- ✅ Yêu cầu 2: Layout dùng grid/flex -->
       <div class="about-content">
         <div class="about-text">
-          <ul class="bio-list">
-            <li><strong>Họ và tên:</strong> Trần Anh Thái</li>
-            <li><strong>Ngày sinh:</strong> 01/09/2004</li>
-            <li><strong>Giới tính:</strong> Nam</li>
-            <li><strong>Ngành học:</strong> Khoa Học Dữ Liệu</li>
-            <li><strong>Email:</strong> trananhthai01092004@gmail.com</li>
-          </ul>
-          <p>
-            Mình yêu thích xây dựng ứng dụng web thực tiễn và ứng dụng machine learning/NLP để
-            tự động hóa quy trình. Mục tiêu là phát triển sản phẩm mượt, dễ dùng và có tác động thật.
-          </p>
-        </div>
+  <div class="info-grid">
+    <div class="info-card">
+      <i class="fa-solid fa-user"></i>
+      <div><strong>Họ và tên:</strong> Trần Anh Thái</div>
+    </div>
+    <div class="info-card">
+      <i class="fa-solid fa-cake-candles"></i>
+      <div><strong>Ngày sinh:</strong> 01/09/2004</div>
+    </div>
+    <div class="info-card">
+      <i class="fa-solid fa-venus-mars"></i>
+      <div><strong>Giới tính:</strong> Nam</div>
+    </div>
+    <div class="info-card">
+      <i class="fa-solid fa-graduation-cap"></i>
+      <div><strong>Ngành học:</strong> Khoa Học Dữ Liệu</div>
+    </div>
+    <div class="info-card">
+  <i class="fa-solid fa-book"></i>
+  <div><strong>GPA:</strong> 3.3 / 4.0</div>
+</div>
+  </div>
+
+  <div class="goal-card-alt">
+    <p>
+      Mình yêu thích xây dựng ứng dụng web thực tiễn và ứng dụng machine learning/NLP để tự động hóa quy trình. 
+      Mục tiêu là phát triển sản phẩm mượt, dễ dùng và có tác động thật.
+    </p>
+  </div>
+</div>
         <!-- Thay ảnh bằng ảnh thật của bạn trong thư mục /img/ -->
         <div class="photo-grid">
           <img src="..\images\Thai1.jpg" alt="Ảnh cá nhân 1" class="photo" />
@@ -72,7 +98,8 @@
   <section id="career" class="section">
     <div class="container">
       <h2 class="section-title">Mục tiêu nghề nghiệp</h2>
-      <div class="goals-grid">
+      <div class="career-box">
+        <div class="goals-grid">
         <div class="goal-card">
           <div class="goal-number">01</div>
           <h3>Full‑stack thực chiến</h3>
@@ -94,13 +121,16 @@
           <p>Chia sẻ dự án mở và học hỏi từ cộng đồng để cải thiện kỹ năng, tư duy hệ thống.</p>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
   <!-- ✅ Yêu cầu 5: Sở thích -->
   <section id="hobbies" class="section">
-    <div class="container">
-      <h2 class="section-title">Sở thích</h2>
+  <div class="container">
+    <h2 class="section-title">Sở thích</h2>
+
+    <div class="hobby-box">
       <div class="hobbies-grid">
         <div class="hobby-card"><div class="hobby-icon">💻</div><h3>Làm dự án</h3><p>Thử nghiệm giải pháp web và NLP.</p></div>
         <div class="hobby-card"><div class="hobby-icon">🎧</div><h3>Âm nhạc</h3><p>Nghe nhạc khi code để tập trung.</p></div>
@@ -108,13 +138,15 @@
         <div class="hobby-card"><div class="hobby-icon">🏃</div><h3>Thể thao</h3><p>Chạy bộ, tập gym đều đặn.</p></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <!-- ✅ Yêu cầu 6: Ngôn ngữ & Kỹ năng (progress bar động) -->
   <section id="skills" class="section">
     <div class="container">
       <h2 class="section-title">Ngôn ngữ & Kỹ năng</h2>
-      <div class="skills-content">
+      <div class="skill-box">
+        <div class="skills-content">
         <div class="skills-column">
           <h3>Ngôn ngữ</h3>
           <div class="skill-item"><div class="skill-header"><span>Tiếng Việt</span><span>100%</span></div><div class="skill-bar"><div class="skill-progress" style="width:100%"></div></div></div>
@@ -127,6 +159,7 @@
           <div class="skill-item"><div class="skill-header"><span>ASP.NET Core</span><span>70%</span></div><div class="skill-bar"><div class="skill-progress" style="width:70%"></div></div></div>
           <div class="skill-item"><div class="skill-header"><span>NLP + n8n</span><span>65%</span></div><div class="skill-bar"><div class="skill-progress" style="width:65%"></div></div></div>
         </div>
+      </div>
       </div>
     </div>
   </section>
@@ -151,7 +184,8 @@
   <section id="projects" class="section">
     <div class="container">
       <h2 class="section-title">Dự án cá nhân</h2>
-      <div class="projects-grid">
+      <div class="project-box">
+        <div class="projects-grid">
         <!-- Dự án 2: Quản lý cửa hàng điện thoại (ASP.NET Core) -->
         <div class="project-card">
           <img src="..\images\Thai5.jpg" alt="Quản lý sinh viên" class="project-image" />
@@ -177,31 +211,48 @@
           </div>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
   <!-- ✅ Yêu cầu 9: Liên hệ (github, fb, ins, email…) -->
   <section id="contact" class="section">
-    <div class="container">
-      <h2 class="section-title">Liên hệ</h2>
+  <div class="container">
+    <h2 class="section-title">Liên hệ</h2>
+
+    <div class="contact-box">
       <div class="contact-content">
-        <!-- Form minh họa (không gửi) -->
+        <!-- Form liên hệ -->
         <form class="contact-form" onsubmit="handleSubmit(event)">
-          <div class="form-group"><input type="text" placeholder="Họ tên" required /></div>
-          <div class="form-group"><input type="email" placeholder="Email" required /></div>
-          <div class="form-group"><textarea placeholder="Lời nhắn" rows="5" required></textarea></div>
+          <div class="form-group">
+            <input type="text" placeholder="Họ tên" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Email" required />
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Lời nhắn" rows="5" required></textarea>
+          </div>
           <button type="submit" class="submit-button">Gửi</button>
         </form>
+
+        <!-- Thông tin & liên kết mạng xã hội -->
         <div class="contact-info">
           <h3>Kết nối với mình</h3>
           <div class="social-links">
-            <a href="https://github.com/thai12546-t" class="social-link">GitHub</a>
-            <a href="https://www.facebook.com/trananh.thai.608579" class="social-link">Facebook</a>
+            <a href="https://github.com/thai12546-t" target="_blank" class="social-icon">
+              <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" style="filter: invert(1);" />
+
+            </a>
+            <a href="https://www.facebook.com/trananh.thai.608579" target="_blank" class="social-icon">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Facebook_icon.svg" alt="Facebook" />
+            </a>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
   <footer class="footer">
     <div class="container">

@@ -1,8 +1,4 @@
-/*
-  ✅ Đáp ứng yêu cầu 11 (Clean code + comment) & 12 (CSS3: animation, transform)
-  - Chủ đề: Dark + cyan/blue neon
-  - Layout: flex + grid cho mọi section
-*/
+
 
 :root {
   --bg-primary: #0a0e27;
@@ -44,50 +40,101 @@ body {
 /* 🧭 Navbar (fixed + blur) */
 .navbar {
   position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(10, 14, 39, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border-color);
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 1000;
-  padding: 1rem 0;
-}
-
-.nav-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+  background: rgba(15, 15, 30, 0.95);
+  border: 2px solid #ff9f43; /* viền cam đào */
+  border-radius: 50px;
+  padding: 10px 35px;
+  box-shadow: 0 0 20px rgba(255, 159, 67, 0.4);
+  backdrop-filter: blur(8px);
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
+  transition: 0.4s ease;
 }
 
+/* Container gộp logo + menu */
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: nowrap; /* ✅ chỉ 1 hàng */
+}
+
+/* Logo – hiệu ứng gradient động */
 .nav-logo {
-  font-size: 30px;
-  font-weight: 700;
-  background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+  font-size: 28px;
+  font-weight: 800;
+  text-align: center;
+  line-height: 1.2;
+  background: linear-gradient(270deg, #ff9f43, #ff6b81, #d67fff);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-clip: text;
+  animation: gradientFlow 8s ease infinite;
 }
 
+/* Menu ngang */
 .nav-menu {
   display: flex;
+  align-items: center;
+  justify-content: center;
   list-style: none;
-  gap: 20px;
+  gap: 25px;
+  flex-wrap: nowrap;
 }
 
 .nav-link {
-  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-decoration: none;
-  font-size: 20px;
-  transition: var(--transition);
+  color: var(--text-primary);
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 22px;
+  border-radius: 30px;
+  transition: 0.3s;
+  white-space: nowrap;
   position: relative;
 }
 
-.nav-link:hover,
+/* Icon trước mỗi link */
+.nav-link::before {
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 8px;
+  opacity: 0.8;
+}
+
+/* Gán icon từng mục */
+.nav-link[data-section="home"]::before { content: "\f015"; }
+.nav-link[data-section="about"]::before { content: "\f007"; }
+.nav-link[data-section="career"]::before { content: "\f0b1"; } 
+.nav-link[data-section="hobbies"]::before { content: "\f004"; } 
+.nav-link[data-section="skills"]::before { content: "\f121"; }
+.nav-link[data-section="certificates"]::before { content: "\f058"; }
+.nav-link[data-section="projects"]::before { content: "\f07b"; }
+.nav-link[data-section="contact"]::before { content: "\f0e0"; }
+
+/* Hover – chuyển sang cam đào + phát sáng nhẹ */
+.nav-link:hover {
+  background: linear-gradient(135deg, #ff9f43, #ff6b81);
+  color: #0a0e27;
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 107, 129, 0.4);
+}
+
+/* Active – màu nổi bật hơn + phát sáng neon */
 .nav-link.active {
-  color: var(--accent-cyan);
+  background: linear-gradient(135deg, #ff6b81, #ff9f43);
+  color: #0a0e27;
+  box-shadow: 0 0 25px rgba(255, 159, 67, 0.6);
+  font-weight: 700;
 }
 
 .nav-link.active::after {
@@ -103,8 +150,8 @@ body {
 
 /* 🎇 Hero (banner nền chuyển động) */
 .hero {
-  margin-top: 60px;
-  min-height: calc(100vh - 60px);
+  margin-top: 0px;
+  min-height: calc(110vh - 60px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,9 +163,10 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 20% 50%, rgba(0, 153, 255, 0.12) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(0, 217, 255, 0.12) 0%, transparent 50%);
-  animation: bgFloat 15s linear infinite;
+    radial-gradient(circle at 25% 40%, rgba(255, 159, 67, 0.18) 0%, transparent 55%),
+    radial-gradient(circle at 75% 70%, rgba(255, 107, 129, 0.15) 0%, transparent 60%),
+    radial-gradient(circle at 50% 90%, rgba(214, 127, 255, 0.12) 0%, transparent 70%);
+  animation: bgFloat 18s linear infinite;
   z-index: 0;
 }
 
@@ -129,13 +177,13 @@ body {
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   text-align: center;
   animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 100px;
   font-weight: 800;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
@@ -145,7 +193,7 @@ body {
 }
 
 .hero-subtitle {
-  font-size: 1.15rem;
+  font-size: 30px;
   color: var(--text-secondary);
   margin-bottom: 2rem;
 }
@@ -156,7 +204,7 @@ body {
   color: var(--bg-primary);
   border: none;
   border-radius: 50px;
-  font-size: 1rem;
+  font-size: 30px;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
@@ -188,8 +236,25 @@ body {
 .about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  align-items: center;
+  gap: 40px;
+  align-items: start;
+
+  /* 👇 phần khung nền chính */
+  background: rgba(15, 18, 40, 0.75);
+  border: 1px solid rgba(255, 159, 67, 0.25);
+  border-radius: 25px;
+  padding: 60px 70px;
+
+  /* 👇 hiệu ứng sáng viền mềm */
+  box-shadow: 0 0 40px rgba(255, 159, 67, 0.12),
+              inset 0 0 15px rgba(255, 107, 129, 0.08);
+  transition: all 0.4s ease;
+}
+
+.about-content:hover {
+  box-shadow: 0 0 55px rgba(255, 159, 67, 0.2),
+              inset 0 0 20px rgba(255, 107, 129, 0.12);
+  transform: scale(1.01);
 }
 
 .bio-list {
@@ -197,42 +262,54 @@ body {
 }
 
 .bio-list li {
-  margin: 6px 0;
-  font-size: 30px;
+  margin: 8px 0;
+  font-size: 20px;
+  line-height: 1.8;
+}
+.bio-list strong {
+  color: var(--accent-cyan);
 }
 
 .about-text p {
-  margin-top: 20px;
+  margin-top: 25px;
   color: var(--text-secondary);
-  line-height: 1.8;
+  font-size: 1rem;
+  text-align: justify;
 }
 
 .photo-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 1.2rem;
+  width: 100%;
+  height: 100%;
 }
 
 .photo {
   width: 100%;
-  height: 170px;
+  height: 100%;
+  aspect-ratio: 1 / 1; /* Giữ tỷ lệ vuông */
   object-fit: cover;
-  border-radius: 10px;
-  border: 2px solid var(--border-color);
-  transition: var(--transition);
+  border-radius: 14px;
+  border: 2px solid rgba(255, 159, 67, 0.25);
+  box-shadow: 0 0 15px rgba(255, 159, 67, 0.15);
+  transition: all 0.4s ease;
 }
 
 .photo:hover {
-  border-color: var(--accent-cyan);
-  box-shadow: 0 0 20px var(--accent-glow);
-  transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 107, 129, 0.4);
+  border-color: rgba(255, 107, 129, 0.6);
 }
 
 /* 🎯 Goals */
 .goals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
   gap: 2rem;
+  flex-wrap: nowrap; /* 🔒 không xuống hàng */
 }
 
 .goal-card {
@@ -564,7 +641,15 @@ body {
 /* 💫 Gradient động cho chữ chính */
 .nav-logo,
 .hero-title,
-.section-title,
+.section-title {
+  text-align: center;
+  font-size: 2.4rem;
+  margin-bottom: 2.5rem;
+  background: linear-gradient(135deg, #ff9f43, #ff6b81);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 15px rgba(255, 159, 67, 0.2);
+},
 .goal-number {
   background: linear-gradient(270deg, #ff9f43, #ff6b81, #d67fff);
   background-size: 300% 300%;
@@ -601,4 +686,373 @@ body {
   0% { box-shadow: 0 0 15px #ff9f43; border-color: #ff9f43; }
   50% { box-shadow: 0 0 25px #ff6b81; border-color: #ff6b81; }
   100% { box-shadow: 0 0 15px #ff9f43; border-color: #ff9f43; }
+}
+
+/* ⚡ Lưới thông tin cá nhân */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(26, 31, 58, 0.6);
+  border: 1px solid rgba(255, 159, 67, 0.4);
+  border-radius: 12px;
+  padding: 14px 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 8px rgba(255, 159, 67, 0.1);
+}
+
+.info-card i {
+  color: var(--accent-cyan);
+  font-size: 30px;
+  width: 28px;
+  text-align: center;
+}
+
+.info-card strong {
+  color: var(--accent-cyan);
+  font-weight: 700;
+}
+
+.info-card:hover {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 15px rgba(255, 107, 129, 0.25);
+  transform: translateY(-3px);
+}
+
+/* 🎯 Khối mục tiêu cá nhân */
+.goal-card-alt {
+  background: rgba(26, 31, 58, 0.6);
+  border-left: 3px solid var(--accent-blue);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(255, 107, 129, 0.1);
+}
+
+.goal-card-alt p {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: justify;
+}
+
+.goal-card-alt p strong {
+  color: var(--accent-cyan);
+}
+
+/* 🔄 Responsive chỉnh layout mềm */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero-avatar {
+  width: 230px;
+  height: 230px;
+  margin: 0 auto 25px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+
+  /* 🌈 Viền sáng neon */
+  border: 3px solid rgba(255, 159, 67, 0.8);
+  box-shadow:
+    0 0 15px rgba(255, 159, 67, 0.5),
+    0 0 30px rgba(255, 107, 129, 0.4),
+    0 0 45px rgba(255, 107, 129, 0.25);
+
+  animation: avatarGlow 3s ease-in-out infinite alternate;
+  transition: transform 0.4s ease;
+  
+}
+
+.hero-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  transition: transform 0.4s ease;
+}
+
+.career-box {
+  background: rgba(15, 18, 40, 0.75);
+  border: 1px solid rgba(255, 159, 67, 0.25);
+  border-radius: 25px;
+  padding: 60px 70px;
+  margin-top: 30px;
+
+  box-shadow: 0 0 40px rgba(255, 159, 67, 0.12),
+              inset 0 0 15px rgba(255, 107, 129, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.career-box:hover {
+  box-shadow: 0 0 55px rgba(255, 159, 67, 0.2),
+              inset 0 0 20px rgba(255, 107, 129, 0.12);
+  transform: scale(1.01);
+}
+
+/* 🌌 Aura nhẹ bên ngoài khung */
+.career-box::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 159, 67, 0.08), transparent 70%);
+  z-index: -1;
+  filter: blur(50px);
+}
+
+.hobby-box,
+.skill-box,
+.certificate-box,
+.project-box {
+  background: rgba(15, 18, 40, 0.75); /* nền tối trong suốt nhẹ */
+  border: 1px solid rgba(255, 159, 67, 0.25); /* viền cam nhạt */
+  border-radius: 25px;
+  padding: 60px 70px;
+  margin-top: 30px;
+  position: relative;
+
+  /* hiệu ứng sáng viền */
+  box-shadow:
+    0 0 40px rgba(255, 159, 67, 0.12),
+    inset 0 0 15px rgba(255, 107, 129, 0.08);
+  transition: all 0.4s ease;
+}
+
+/* Khi hover khung sẽ sáng hơn nhẹ */
+.hobby-box:hover,
+.skill-box:hover,
+.certificate-box:hover,
+.project-box:hover {
+  box-shadow:
+    0 0 55px rgba(255, 159, 67, 0.2),
+    inset 0 0 20px rgba(255, 107, 129, 0.12);
+  transform: scale(1.01);
+}
+
+/* Hiệu ứng ánh sáng mờ xung quanh khung */
+.hobby-box::before,
+.skill-box::before,
+.certificate-box::before,
+.project-box::before {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 159, 67, 0.08), transparent 70%);
+  z-index: -1;
+  filter: blur(50px);
+}
+
+/* 🧩 Giãn cách đẹp giữa các phần tử bên trong */
+.hobbies-grid {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  flex-wrap: nowrap; /* ❗ Không cho xuống hàng */
+},
+.skills-content,
+.certificates-grid,
+.projects-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+/* 🧠 Style đồng bộ cho từng card nhỏ bên trong */
+.hobby-card,
+.certificate-card,
+.project-card {
+  background: rgba(30, 35, 65, 0.7);
+  border-radius: 15px;
+  padding: 25px 30px;
+  border: 1px solid rgba(255, 159, 67, 0.15);
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.hobby-card:hover,
+.certificate-card:hover,
+.project-card:hover {
+  border-color: rgba(255, 159, 67, 0.5);
+  box-shadow: 0 0 20px rgba(255, 159, 67, 0.25);
+  transform: translateY(-4px);
+}
+
+/* Icon và tiêu đề trong từng card */
+.hobby-icon {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.hobby-card h3,
+.certificate-card h3,
+.project-card h3 {
+  color: var(--accent-cyan, #ff9f43);
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+/* 🌌 === PHẦN LIÊN HỆ === */
+.contact-box {
+  background: rgba(15, 18, 40, 0.75);
+  border: 1px solid rgba(255, 159, 67, 0.25);
+  border-radius: 25px;
+  padding: 60px 70px;
+  margin-top: 30px;
+  position: relative;
+  box-shadow:
+    0 0 40px rgba(255, 159, 67, 0.12),
+    inset 0 0 15px rgba(255, 107, 129, 0.08);
+  transition: all 0.4s ease;
+}
+
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.contact-form {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-info {
+  flex: 0.8;
+  min-width: 250px;
+}
+
+.contact-info h3 {
+  color: var(--accent-cyan, #ff9f43);
+  margin-bottom: 1rem;
+}
+
+/* Input và textarea */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  background: rgba(30, 35, 65, 0.7);
+  border: 1px solid rgba(255, 159, 67, 0.25);
+  border-radius: 10px;
+  padding: 12px 16px;
+  color: #fff;
+  margin-bottom: 1.2rem;
+  transition: 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: #ff9f43;
+  box-shadow: 0 0 8px rgba(255, 159, 67, 0.3);
+  outline: none;
+}
+
+/* Nút gửi */
+.submit-button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff9f43, #ff6b81);
+  color: #111;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 107, 129, 0.25);
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 25px rgba(255, 159, 67, 0.4);
+}
+
+/* Icon mạng xã hội */
+.social-links {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.social-icon img {
+  width: 65px;           /* 🔥 tăng kích thước logo */
+  height: 65px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(255, 159, 67, 0.25);
+  filter: brightness(1.4); /* logo sáng hơn nhẹ */
+}
+
+.social-icon img:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 30px rgba(255, 159, 67, 0.4);
+  filter: brightness(1.8);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .contact-content {
+    flex-direction: column;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+}
+
+/* 🔝 Nút lên đầu trang chỉ dùng HTML + CSS */
+.back-to-top {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #ff6b81, #ff9f43);
+  color: white;
+  font-size: 22px;
+  text-align: center;
+  line-height: 60px;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(255, 107, 129, 0.5);
+  transition: all 0.4s ease;
+  z-index: 999;
+  opacity: 0.85;
+}
+
+/* Hover hiệu ứng phát sáng */
+.back-to-top:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 35px rgba(255, 159, 67, 0.8);
+  opacity: 1;
+}
+
+/* ✨ Hiệu ứng glow động */
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 15px rgba(255, 107, 129, 0.4); }
+  50% { box-shadow: 0 0 30px rgba(255, 159, 67, 0.8); }
+  100% { box-shadow: 0 0 15px rgba(255, 107, 129, 0.4); }
+}
+
+.back-to-top {
+  animation: pulseGlow 3s infinite ease-in-out;
 }
