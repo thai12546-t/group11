@@ -6,6 +6,7 @@
   <title>Phạm Đăng Trình — Portfolio</title>
   <link rel="stylesheet" href="../css/Trinh.css"> 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
   <div class="container">
@@ -16,8 +17,8 @@
         <li><a href="#about">Giới thiệu</a></li>
         <li><a href="#goals">Mục tiêu</a></li>
         <li><a href="#interests">Sở thích</a></li>
-        <li><a href="#skills">Kỹ năng</a></li>
         <li><a href="#awards">Chứng chỉ</a></li> 
+        <li><a href="#skills">Kỹ năng</a></li>
         <li><a href="#projects">Dự án</a></li>
         <li><a href="#contact">Liên hệ</a></li>
       </ul>
@@ -39,7 +40,7 @@
       </div>
       <div class="hero-right">
         <div class="avatar-wrap">
-          <img src="../images/Trinh2.jpg" alt="Phạm Đăng Trình">
+          <img src="../images/Trinh2.jpg" alt="Phạm Đăng Trình (Avatar chính)"> 
           <div class="holo-border"></div>
         </div>
       </div>
@@ -49,6 +50,20 @@
       <section id="about" class="card">
         <h2>Giới thiệu</h2>
         <p>Tôi là <strong>Phạm Đăng Trình</strong>, sinh viên yêu thích công nghệ, đặc biệt trong lĩnh vực Khoa học dữ liệu và AI. Tôi mong muốn được học hỏi và phát triển trong môi trường công nghệ hiện đại.</p>
+        
+        <div class="about-gallery">
+            <div class="gallery-item">
+                <img src="../images/Trinh4.jpg" alt="Ảnh cá nhân làm việc">
+            </div>
+            <div class="gallery-item">
+                <img src="../images/Trinh5.jpg" alt="Ảnh cá nhân tại sự kiện">
+            </div>
+             <div class="gallery-item">
+                <img src="../images/Trinh6.jpg" alt="Ảnh cá nhân với đồng đội">
+            </div>
+            <div class="gallery-item"> <img src="../images/Trinh7.jpg" alt="Ảnh cá nhân phong cách">
+            </div>
+        </div>
       </section>
 
       <section id="goals" class="card">
@@ -127,9 +142,35 @@
 
       <section id="contact" class="card">
         <h2>Liên hệ</h2>
-        <p>Email: <a href="mailto:pdt.dz1@gmail.com" class="contact-link">pdt.dz1@gmail.com</a></p>
-        <p>GitHub: <a href="https://github.com/pdt112abc" target="_blank" class="contact-link">github.com/pdt112abc</a></p>
-        <p>Facebook: <a href="https://www.facebook.com/DTrinh112/" target="_blank" class="contact-link">https://www.facebook.com/DTrinh112/</a></p>
+        <div class="contact-content-grid">
+            <div class="contact-form">
+                <form action="#" method="POST">
+                    <input type="text" name="name" placeholder="Họ Tên" required class="input-field">
+                    <input type="email" name="email" placeholder="Email" required class="input-field">
+                    <textarea name="message" placeholder="Lời nhắn" rows="5" required class="input-field"></textarea>
+                    <button type="submit" class="submit-btn">Gửi</button>
+                </form>
+            </div>
+
+            <div class="contact-info">
+                <h3>Kết nối với mình</h3>
+                <p>
+                    <a href="mailto:pdt.dz1@gmail.com" class="contact-link">
+                        <i class="fas fa-envelope"></i> pdt.dz1@gmail.com
+                    </a>
+                </p>
+                <p>
+                    <a href="https://github.com/pdt112abc" target="_blank" class="contact-link">
+                        <i class="fab fa-github"></i> github.com/pdt112abc
+                    </a>
+                </p>
+                <p>
+                    <a href="https://www.facebook.com/DTrinh112/" target="_blank" class="contact-link">
+                        <i class="fab fa-facebook"></i> facebook.com/DTrinh112/
+                    </a>
+                </p>
+            </div>
+        </div>
       </section>
     </main>
 
@@ -146,20 +187,22 @@
     function typewriterEffect(element, text, speed) {
       return new Promise(resolve => {
         let i = 0;
-        element.textContent = ''; // Xóa nội dung ban đầu
+        element.textContent = ''; 
         
         function type() {
           if (i < text.length) {
-            // Thêm thẻ <span> cho phần Tên riêng 'Đăng Trình' (tùy chỉnh vị trí ký tự)
-            if (text === "Phạm Đăng Trình" && i >= 5) { 
-                element.innerHTML = text.substring(0, 5) + '<span>' + text.substring(5, i + 1) + '</span>';
+            // Bao bọc toàn bộ tên trong thẻ <span> để có màu neon từ đầu
+            if (text === "Phạm Đăng Trình") { 
+                element.innerHTML = '<span>' + text.substring(0, i + 1) + '</span>';
             } else {
                  element.textContent += text.charAt(i);
             }
             i++;
             setTimeout(type, speed);
           } else {
-            resolve(); // Hoàn thành khi hết chữ
+            // CẢI TIẾN MỚI: Xóa class để loại bỏ con trỏ nhấp nháy
+            element.classList.remove('typewriter-text');
+            resolve(); 
           }
         }
         type();
@@ -169,17 +212,16 @@
     document.addEventListener("DOMContentLoaded", async function() {
         const typewriterElements = document.querySelectorAll('.typewriter-text');
         
-        // Kích hoạt hiệu ứng gõ chữ tuần tự
         const nameElement = typewriterElements[0];
         const titleElement = typewriterElements[1];
 
         const originalName = nameElement.getAttribute('data-text');
         const originalTitle = titleElement.getAttribute('data-text');
 
-        // Bắt đầu gõ tên (tốc độ 80ms/ký tự)
+        // Bắt đầu gõ tên (toàn bộ tên sẽ có màu neon)
         await typewriterEffect(nameElement, originalName, 80);
         
-        // Bắt đầu gõ tiêu đề (tốc độ 50ms/ký tự)
+        // Bắt đầu gõ tiêu đề 
         await typewriterEffect(titleElement, originalTitle, 50);
 
 
@@ -213,7 +255,7 @@
         // =========================================
         const navLinks = document.querySelectorAll('.nav-links a');
         const allSections = document.querySelectorAll('#home, main section'); 
-        const navHeight = 80; // Chiều cao thanh nav
+        const navHeight = 80; 
 
         window.addEventListener('scroll', () => {
             let current = '';
@@ -246,7 +288,7 @@
 
 
         // =========================================
-        // 4. HIỆU ỨNG LOFI CHILL (GIỮ NGUYÊN)
+        // 4. HIỆU ỨNG LOFI CHILL 
         // =========================================
         const playBtn = document.getElementById('playBtn');
         const audio = document.getElementById('bgAudio');
